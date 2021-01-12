@@ -4,6 +4,69 @@
        <link rel="stylesheet" href="css/styles.css">
     </head>
     <body>
-        <p>Hello!!</p>
+        <div id="main-wrapper">
+        <section id="main-sec">
+            <h1 id="timer"></h1>
+            <section id="commandButns">
+                <button id="start-button">Start</button>
+                <button id="stop-button">Stop</button>
+                <button id="end-button">End</button>
+            </section>
+            <section id="configuration">
+                <div id="pomodoro-config">
+                    <input type="checkbox">
+                    <span>Pomodoro</span>
+                    <input type="text" id="pomodoro-time" name="pomodoro-time">
+                </div>
+                <div id="break-confing">
+                    <input type="checkbox">
+                    <span>Break</span>
+                    <input type="text" id="break-time" name="break-time">
+                </div>
+                <div id="long-break-config">
+                    <input type="checkbox">
+                    <span>Long Break</span>
+                    <input type="text" id="long-break-time" name="long-break-time">
+
+                </div>
+            </section>
+        </section>
+        <section id="history-section">
+            <article class="stat">
+                <h3>Today</h3>
+                <div class="pomodoros">
+                    <p>Pomodoros: </p>
+                    <span id="today-pomodoros"></span>
+                </div>
+                <div class="time">
+                    <p>Time: </p>
+                    <span id="today-time"></span>
+                </div>
+            </article>
+            <article class="stat">
+                <h3>Week</h3>
+                <div class="pomodoros">
+                    <p>Pomodoros: </p>
+                    <span id="week-pomodoros"></span>
+                </div>
+                <div class="time">
+                    <p>Time: </p>
+                    <span id="week-time"></span>
+                </div>
+            </article>
+            <article class="stat">
+                <h3>Month</h3>
+                <div class="pomodoros">
+                    <p>Pomodoros: </p>
+                    <span id="month-pomodoros"></span>
+                </div>
+                <div class="time">
+                    <p>Time: </p>
+                    <span id="month-time"></span>
+                </div>
+            </article>
+        </section>
+        </div>
+        <script src="js/index.js"></script>
     </body>
 </html>
