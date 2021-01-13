@@ -5,8 +5,9 @@
     </head>
     <body>
         <div id="main-wrapper">
-        <section id="main-sec">
-            <h1 id="timer"></h1>
+        <section id="main-section">
+            <h1 id="timer">25:00</h1>
+            <h2 id="pomodoro-finish">Pomodoro finished.</h2>
             <section id="commandButns">
                 <button id="start-button">Start</button>
                 <button id="stop-button">Stop</button>
@@ -14,20 +15,34 @@
             </section>
             <section id="configuration">
                 <div id="pomodoro-config">
-                    <input type="checkbox">
-                    <span>Pomodoro</span>
-                    <input type="text" id="pomodoro-time" name="pomodoro-time">
+                    <div class="conf-box-1">
+                        <input type="checkbox">
+                        <span>Pomodoro</span>
+                    </div>
+                    <div class="conf-box-2">
+                        <input type="text" id="pomodoro-time" name="pomodoro-time" value="25">
+                        <span class="minutes-text">min.</span>
+                    </div>
                 </div>
                 <div id="break-confing">
-                    <input type="checkbox">
-                    <span>Break</span>
-                    <input type="text" id="break-time" name="break-time">
+                    <div class="conf-box-1">
+                        <input type="checkbox">
+                        <span>Break</span>
+                    </div>
+                    <div class="conf-box-2">
+                        <input type="text" id="break-time" name="break-time" value="5">
+                        <span class="minutes-text">min.</span>
+                    </div>
                 </div>
                 <div id="long-break-config">
-                    <input type="checkbox">
-                    <span>Long Break</span>
-                    <input type="text" id="long-break-time" name="long-break-time">
-
+                    <div class="conf-box-1">
+                        <input type="checkbox">
+                        <span>Long Break</span>
+                    </div>
+                    <div class="conf-box-2">
+                        <input type="text" id="long-break-time" name="long-break-time" value="15">
+                        <span class="minutes-text">min.</span>
+                    </div>
                 </div>
             </section>
         </section>
