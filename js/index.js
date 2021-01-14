@@ -6,22 +6,51 @@ const running = 'RUNNING';
 const extra = 'EXTRA';
 const stopState = 'STOP';
 
-const millisInSecond = 300;
+const millisInSecond = 100;
 
 let secondsTotal = 0;
 let mode = pomodoro;
 let programState = stopState;
 let intervalFunc = false;
+let pomodoros = 0;
 
 let startButton = document.getElementById('start-button');
 let controlButton = document.getElementById('stop-button');
 let endButton = document.getElementById('end-button');
 let timerElement = document.getElementById('timer');
+let finishElement = document.getElementById('pomodoro-finish');
 let pomodoroInput = document.getElementById('pomodoro-time');
 let breakInput = document.getElementById('break-time');
 let longBreakInput = document.getElementById('long-break-time');
+let pomodoroCheckbox = document.getElementById('pomodoro-checkbox');
+let breakCheckbox = document.getElementById('break-checkbox');
+let longBreakCheckbox = document.getElementById('long-break-checkbox');
 
 let inputActive = pomodoroInput;
+
+const activatePomodoroInput = () => {
+        pomodoroCheckbox.checked = true;
+        breakCheckbox.checked = false;
+        longBreakCheckbox.checked = false;
+        mode = pomodoro;
+        inputActive = pomodoroInput;
+}
+
+const activateBreakInput = () => {
+        pomodoroCheckbox.checked = false;
+        breakCheckbox.checked = true;
+        longBreakCheckbox.checked = false;
+        mode = breakTime;
+        inputActive = breakInput;
+}
+
+const activateLongBreakInput = () => {
+        pomodoroCheckbox.checked = false;
+        breakCheckbox.checked = false;
+        longBreakCheckbox.checked = true;
+        mode = longBreak;
+        inputActive = longBreakInput;
+}
 
 const getUpdateTimer = () => {
 
@@ -34,6 +63,9 @@ const getUpdateTimer = () => {
         } else {
             programState = extra;
             secondsTotal ++;
+            if (mode == pomodoro) {
+                finishElement.style.display = 'block';
+            }
         }
     } else if (programState == extra) {
         secondsTotal ++;
@@ -99,11 +131,35 @@ controlButton.addEventListener('click', () => {
 
 endButton.addEventListener('click', () => {
 
-    //Stop interval if running
+    //Stop interval if running and check next timer value
     if (intervalFunc) {
         clearInterval(intervalFunc);
         intervalFunc = false;
     } 
+
+    if (programState != stopState) {
+        //If in pomodoro mode check if it ended and update to timer to 
+        //correct break time.
+        if (mode == pomodoro) {
+            if (programState == extra) {
+                pomodoros ++;
+
+                if (pomodoros >= 3) {
+                    activateLongBreakInput();
+                    pomodoros = 0;
+                }else {
+                    activateBreakInput();
+                } 
+                finishElement.style.display = 'none';
+
+            }else {
+                activatePomodoroInput();
+            }
+
+        } else {
+            activatePomodoroInput();
+        }
+    }
 
     if (controlButton.innerText == 'Continue') {
         controlButton.innerHTML = 'Stop';
@@ -121,3 +177,41 @@ endButton.addEventListener('click', () => {
 
 })
 
+pomodoroCheckbox.addEventListener('click', () => {
+    if (programState == stopState) {
+        activatePomodoroInput();
+    } else {
+        if (mode == pomodoro) {
+            pomodoroCheckbox.checked = true;
+        } else {
+            pomodoroCheckbox.checked = false;
+        }
+    }
+
+})
+
+breakCheckbox.addEventListener('click', () => {
+    if (programState == stopState) {
+        activateBreakInput();
+    } else {
+        if (mode == breakTime) {
+            breakCheckbox.checked = true;
+        } else {
+            breakCheckbox.checked = false;
+        }
+    }
+
+})
+
+longBreakCheckbox.addEventListener('click', () => {
+    if (programState == stopState) {
+        activateLongBreakInput();
+    } else {
+        if (mode == longBreakCheckbox) {
+            longBreakCheckbox.checked = true;
+        } else {
+            longBreakCheckbox.checked = false;
+        }
+    }
+
+})
