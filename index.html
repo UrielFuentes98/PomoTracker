@@ -20,7 +20,7 @@
                         <span>Pomodoro</span>
                     </div>
                     <div class="conf-box-2">
-                        <input type="text" id="pomodoro-time" name="pomodoro-time" value="25">
+                        <input type="text" id="pomodoro-time" class="input-times" name="break-time" value="5">
                         <span class="minutes-text">min.</span>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                         <span>Break</span>
                     </div>
                     <div class="conf-box-2">
-                        <input type="text" id="break-time" name="break-time" value="5">
+                        <input type="text" id="break-time" class="input-times" name="break-time" value="5">
                         <span class="minutes-text">min.</span>
                     </div>
                 </div>
@@ -40,14 +40,33 @@
                         <span>Long Break</span>
                     </div>
                     <div class="conf-box-2">
-                        <input type="text" id="long-break-time" name="long-break-time" value="15">
+                        <input type="text" id="long-break-time" class="input-times" name="long-break-time" value="15">
                         <span class="minutes-text">min.</span>
                     </div>
                 </div>
             </section>
         </section>
         <section id="history-section">
-            <article class="stat">
+            <form id="login-form" action="index.html" method="post">
+
+                <h1>Log In</h1>  
+
+                <div class="login-input">
+                    <label for="email">Email:</label>
+                    <input type="text" id="email" name="user_email" size="15" >
+                </div>
+
+                <div class="login-input">
+                    <label for="password" >Password:</label>
+                    <input type="password" id="password" >
+                </div>
+
+                <div id="login-form-buttons">
+                    <button type="submit">Log In</button>
+                    <button type="button">Sign Up</button>
+                </div>
+            </form>
+            <!-- <article class="stat">
                 <h3>Today</h3>
                 <div class="pomodoros">
                     <p>Pomodoros: </p>
@@ -79,7 +98,7 @@
                     <p>Time: </p>
                     <span id="month-time"></span>
                 </div>
-            </article>
+            </article> -->
         </section>
         </div>
         <script src="js/index.js"></script>

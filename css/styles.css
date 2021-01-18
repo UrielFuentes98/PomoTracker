@@ -21,7 +21,8 @@ body {
 }
 
 #history-section {
-    margin: 15vh 20% 0 15%;
+    margin: 15vh 10% 0 10%;
+    width: 18%;
 }
 
 #timer, 
@@ -50,6 +51,11 @@ button {
     margin-bottom: 2rem;
 }
 
+#login-form-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
 
 /* */
 
@@ -58,10 +64,30 @@ button {
     margin: 0.8rem 0;
 }
 
-input {
+.input-times {
     max-width: 3rem;
 }
 
 #pomodoro-finish {
     display: none;
+}
+
+.login-input {
+    margin: 0.5rem 0;
+}
+
+#login-form-buttons {
+    margin: 2rem 0;
+}
+
+#email {
+    width: 10rem;
+}
+
+#email::placeholder {
+    display: none;
+}
+
+#password {
+    width: 6rem;
 }
