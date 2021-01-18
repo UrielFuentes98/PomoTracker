@@ -6,13 +6,14 @@ const running = "RUNNING";
 const extra = "EXTRA";
 const stopState = "STOP";
 
-const millisInSecond = 100;
+const millisInSecond = 1000;
 
 let secondsTotal = 0;
 let mode = pomodoro;
 let programState = stopState;
 let intervalFunc = false;
 let pomodoros = 0;
+let alarm = new Audio('sounds/alarm_sound.mp3')
 
 let titleElement = document.getElementsByTagName("title")[0];
 let startButton = document.getElementById("start-button");
@@ -69,6 +70,7 @@ const getUpdateTimer = () => {
       } else if (mode == breakTime || mode == longBreak) {
         breakFinishElement.style.display = "block";
       }
+      alarm.play();
     }
   } else if (programState == extra) {
     secondsTotal++;
@@ -97,6 +99,8 @@ const getUpdateTimer = () => {
   return timerString;
 };
 
+//Function to get first part of title string depending on mode and timer state
+
 const getTitleStringTemplate = () => {
 
   let titleString = '';
@@ -123,6 +127,8 @@ const getTitleStringTemplate = () => {
 
   return titleString;
 }
+
+//Update app timer and title string.
 
 const updateTimerElement = () => {
   let timerString = getUpdateTimer();
