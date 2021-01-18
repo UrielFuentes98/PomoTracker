@@ -1,0 +1,25 @@
+{
+  "name": "PomoTracker",
+  "version": "1.0.0",
+  "description": "Pomodoro web app to track productivity time.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev" : "lite-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UrielFuentes98/PomoTracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UrielFuentes98/PomoTracker/issues"
+  },
+  "homepage": "https://github.com/UrielFuentes98/PomoTracker#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+}

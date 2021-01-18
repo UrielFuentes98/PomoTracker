@@ -1,0 +1,95 @@
+body {
+    font: 1em/1.5 'ArialRounded', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    margin: 0;
+}
+
+/* Layout */
+
+#main-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    
+}
+
+#main-section {
+    width: 25vw;
+    margin-top: 15vh;
+    margin-left: auto;
+}
+
+#history-section {
+    margin: 15vh 10% 0 10%;
+    width: 18%;
+}
+
+#timer, 
+#commandButns,
+#pomodoro-finish,
+#break-finish {
+    text-align: center;
+}
+
+#pomodoro-config,
+#break-confing,
+#long-break-config {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.conf-box-1 {
+    width: 120px;
+}
+
+button {
+    margin-right: 1rem;
+}
+
+#commandButns {
+    margin-bottom: 2rem;
+}
+
+#login-form-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/* */
+
+#timer {
+    font-size: 5rem;
+    margin: 0.8rem 0;
+}
+
+.input-times {
+    max-width: 3rem;
+}
+
+#pomodoro-finish,
+#break-finish {
+    display: none;
+}
+
+.login-input {
+    margin: 0.5rem 0;
+}
+
+#login-form-buttons {
+    margin: 2rem 0;
+}
+
+#email {
+    width: 10rem;
+}
+
+#email::placeholder {
+    display: none;
+}
+
+#password {
+    width: 6rem;
+}
