@@ -14,11 +14,13 @@ let programState = stopState;
 let intervalFunc = false;
 let pomodoros = 0;
 
+let titleElement = document.getElementsByTagName("title")[0];
 let startButton = document.getElementById("start-button");
 let controlButton = document.getElementById("stop-button");
 let endButton = document.getElementById("end-button");
 let timerElement = document.getElementById("timer");
 let finishElement = document.getElementById("pomodoro-finish");
+let breakFinishElement = document.getElementById("break-finish");
 let pomodoroInput = document.getElementById("pomodoro-time");
 let breakInput = document.getElementById("break-time");
 let longBreakInput = document.getElementById("long-break-time");
@@ -64,6 +66,8 @@ const getUpdateTimer = () => {
       secondsTotal++;
       if (mode == pomodoro) {
         finishElement.style.display = "block";
+      } else if (mode == breakTime || mode == longBreak) {
+        breakFinishElement.style.display = "block";
       }
     }
   } else if (programState == extra) {
@@ -93,9 +97,44 @@ const getUpdateTimer = () => {
   return timerString;
 };
 
+const getTitleStringTemplate = () => {
+
+  let titleString = '';
+
+  if (programState == stopState) {
+
+    if (mode == pomodoro) {
+      titleString = 'Start Pomodoro';
+    } else if (mode == breakTime) {
+      titleString = 'Start Break';
+    } else if (mode == longBreak) {
+      titleString = 'Start Long Break';
+    }
+
+  } else if (programState == extra) {
+    titleString = 'Extra - ';
+  } else if (mode == pomodoro) {
+    titleString = 'Pomodoro - ';
+  } else if (mode == breakTime) {
+    titleString = 'Break - ';
+  } else if (mode == longBreak) {
+    titleString = 'Long Break - ';
+  }
+
+  return titleString;
+}
+
 const updateTimerElement = () => {
   let timerString = getUpdateTimer();
+  let titleString = '';
+  titleString = getTitleStringTemplate();
+
+  if (programState != stopState) {
+    titleString += timerString;
+  }
+
   timerElement.textContent = timerString;
+  titleElement.textContent = titleString;
 };
 
 const checkInputNumber = (intMinutes) =>
@@ -153,6 +192,7 @@ endButton.addEventListener("click", () => {
         activatePomodoroInput();
       }
     } else {
+      breakFinishElement.style.display = "none";
       activatePomodoroInput();
     }
   }

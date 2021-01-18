@@ -27,7 +27,8 @@ body {
 
 #timer, 
 #commandButns,
-#pomodoro-finish {
+#pomodoro-finish,
+#break-finish {
     text-align: center;
 }
 
@@ -68,7 +69,8 @@ button {
     max-width: 3rem;
 }
 
-#pomodoro-finish {
+#pomodoro-finish,
+#break-finish {
     display: none;
 }
 
