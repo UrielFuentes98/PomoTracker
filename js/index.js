@@ -6,14 +6,15 @@ const running = "RUNNING";
 const extra = "EXTRA";
 const stopState = "STOP";
 
-const millisInSecond = 1000;
+const millisInSecond = 100;
 
 let secondsTotal = 0;
 let mode = pomodoro;
 let programState = stopState;
 let intervalFunc = false;
 let pomodoros = 0;
-let alarm = new Audio('sounds/alarm_sound.mp3')
+let alarm = new Audio('sounds/alarm_sound.mp3');
+let buttonClick = new Audio('sounds/click.mp3');
 
 let titleElement = document.getElementsByTagName("title")[0];
 let startButton = document.getElementById("start-button");
@@ -154,6 +155,7 @@ startButton.addEventListener("click", () => {
 
     //Check if input is integer and inside parameter
     if (checkInputNumber(intMinutes)) {
+      buttonClick.play();
       secondsTotal = setMinutes * 60 + 1;
       intervalFunc = setInterval(updateTimerElement, millisInSecond);
       programState = running;
@@ -163,13 +165,16 @@ startButton.addEventListener("click", () => {
 
 controlButton.addEventListener("click", () => {
   //Check if interval is running, delete it if so and change legend
-  if (intervalFunc) {
-    clearInterval(intervalFunc);
-    intervalFunc = false;
-    controlButton.innerText = "Continue";
-  } else {
-    intervalFunc = setInterval(updateTimerElement, millisInSecond);
-    controlButton.innerText = "Stop";
+  if (programState != stopState) {
+    buttonClick.play();
+    if (intervalFunc) {
+      clearInterval(intervalFunc);
+      intervalFunc = false;
+      controlButton.innerText = "Continue";
+    } else {
+      intervalFunc = setInterval(updateTimerElement, millisInSecond);
+      controlButton.innerText = "Stop";
+    }
   }
 });
 
@@ -183,6 +188,7 @@ endButton.addEventListener("click", () => {
   if (programState != stopState) {
     //If in pomodoro mode check if it ended and update to timer to
     //correct break time.
+    buttonClick.play();
     if (mode == pomodoro) {
       if (programState == extra) {
         pomodoros++;
