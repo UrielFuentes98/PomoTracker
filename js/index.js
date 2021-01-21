@@ -6,7 +6,7 @@ const running = "RUNNING";
 const extra = "EXTRA";
 const stopState = "STOP";
 
-const millisInSecond = 100;
+const millisInSecond = 1000;
 
 let secondsTotal = 0;
 let mode = pomodoro;
